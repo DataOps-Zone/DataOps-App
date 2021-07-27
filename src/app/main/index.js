@@ -240,8 +240,9 @@ angular
 
         var meta = (project.metadata || {})
         trackingService.init({
-            track: meta.send_anonymous_usage_stats,
-            project_id: meta.project_id
+            track: (process.env.NODE_ENV != 'development') && meta.send_anonymous_usage_stats,
+            project_id: meta.project_id,
+
         });
 
     });
